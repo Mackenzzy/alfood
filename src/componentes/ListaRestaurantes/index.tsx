@@ -54,13 +54,14 @@ const ListaRestaurantes = () => {
   return (
     <section className={style.ListaRestaurantes}>
       <h1>Os restaurantes mais <em>bacanas</em>!</h1>
-      <form onSubmit={buscar}>
+      <form className={style.Formulario} onSubmit={buscar}>
         <div>
-          <input type="text" value={busca} onChange={(evento) => setBusca(evento.target.value)} />
+          <input className={style.InputBusca} type="text" value={busca} onChange={(evento) => setBusca(evento.target.value)} />
         </div>
         <div>
-          <label htmlFor="select-ordenacao">Ordenação</label>
+          <label className={style.LabelOrdenacao} htmlFor="select-ordenacao">Ordenação</label>
           <select
+            className={style.SelectOrdenacao}
             name="select-ordenacao"
             id="select-ordenacao"
             value={ordenacao}
@@ -72,18 +73,20 @@ const ListaRestaurantes = () => {
           </select>
         </div>
         <div>
-          <button type="submit">buscar</button>
+          <button className={style.Botao} type="submit">Buscar</button>
         </div>
       </form>
       {restaurantes?.map((item) => (
         <Restaurante restaurante={item} key={item.id} />
       ))}
-      {<button onClick={() => carregarDados(paginaAnterior)} disabled={!paginaAnterior}>
+      <div className={style.Paginacao}>
+      {<button className={style.Botao} onClick={() => carregarDados(paginaAnterior)} disabled={!paginaAnterior}>
         Página Anterior
       </button>}
-      {<button onClick={() => carregarDados(proximaPagina)} disabled={!proximaPagina}>
+      {<button className={style.Botao} onClick={() => carregarDados(proximaPagina)} disabled={!proximaPagina}>
         Próxima página
       </button>}
+      </div>
     </section>
   );
 };

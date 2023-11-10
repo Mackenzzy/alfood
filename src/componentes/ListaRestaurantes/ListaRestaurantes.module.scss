@@ -2,3 +2,53 @@
   margin-top: 1.5rem;
   padding: 2rem;
 }
+.Formulario{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+.InputBusca{
+  font-size: 1.2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f2f6ff;
+  border-bottom: #ccc solid 0.2rem;
+}
+
+.LabelOrdenacao{
+  margin: 1rem;
+  font-size: 1.2rem;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 1rem;
+}
+.SelectOrdenacao{
+  font-size: 1.2rem;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #f2f6ff;
+  padding: 0.5rem;
+  border: 0;
+
+}
+.Botao{
+  font-size: 1.2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f2f6ff;
+  border-bottom: #ccc solid 0.2rem;
+  cursor: pointer;
+}
+.Botao:hover{
+  background-color: #f2745f;
+}
+.Paginacao{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
