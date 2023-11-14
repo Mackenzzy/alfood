@@ -46,7 +46,7 @@ const AdministracaoPratos = () => {
                             <TableCell>{prato.tag}</TableCell>
                             <TableCell>
                                 <a href={prato.imagem} target="_blank" rel="noopener noreferrer"> Ver Imagem</a></TableCell>
-                            <TableCell><Link to={`/admin/restaurantes/${prato.id}`} >Editar</Link></TableCell>
+                            <TableCell><Link to={`/admin/pratos/${prato.id}`} >Editar</Link></TableCell>
                             <TableCell><Button
                                 variant="outlined"
                                 color="error"
