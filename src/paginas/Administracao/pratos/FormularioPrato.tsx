@@ -1,12 +1,14 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import http from "../../../http";
+import IPrato from "../../../interfaces/IPrato";
 import IRestaurante from "../../../interfaces/IRestaurante";
 import ITag from "../../../interfaces/ITags";
 
 const FormularioPrato = () => {
     const navigate = useNavigate();
+    const parametros = useParams();
     const [nomePrato, setNomePrato] = useState("");
     const [descricao, setDescricao] = useState("");
 
@@ -24,6 +26,7 @@ const FormularioPrato = () => {
 
 
     useEffect(() => {
+
         http.get < {tags: ITag[]} >('tags/')
         .then(resposta => {
             setTags(resposta.data.tags)
@@ -33,6 +36,20 @@ const FormularioPrato = () => {
             setRestaurantes(resposta.data)            
         })
     },[])
+
+    useEffect(() => {
+        if (parametros.id) {
+            http.get<IPrato>(`pratos/${parametros.id}/`)
+                .then(resposta => {
+                    const [restaurante, setRestaurante] = useState<number>(0);
+                    const prato = resposta.data
+                    setNomePrato(prato.nome)
+                    setDescricao(prato.descricao)
+                    setTag(prato.tag)
+                    setRestaurante(prato.restaurante)
+                })
+        }
+    }, [parametros])
 
     const selecionarArquivo =( evento : React.ChangeEvent<HTMLInputElement> ) =>{
         if (evento.target.files?.length){
@@ -69,7 +86,11 @@ const FormularioPrato = () => {
             },
             data: formData
         })
-        .then(resposta =>{
+        .then(() =>{
+            setNomePrato('')
+            setDescricao('')
+            setTag('')
+            setRestaurante('')            
             alert('Prato cadastrado com sucesso')
             navigate('/admin/pratos')
         })
