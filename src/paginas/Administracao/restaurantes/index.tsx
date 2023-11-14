@@ -54,12 +54,6 @@ const AdministracaoRestaurtantes = () => {
                         </TableRow>)}
 
                 </TableBody>
-                <Button
-                    sx={{ marginTop: "1rem" }}
-                    variant="outlined"
-                    color="success"
-                    onClick={novo}
-                    >Novo</Button>
             </Table>
 
         </TableContainer>

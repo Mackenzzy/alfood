@@ -1,8 +1,9 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { AppBar, Box, Button, TextField, Typography, Container, Toolbar, Link, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import http from "../../../http";
 import IRestaurante from "../../../interfaces/IRestaurante";
+import { Link as RouterLink } from 'react-router-dom';
 
 const FormularioRestaurante = () => {
   const navigate = useNavigate();
@@ -53,28 +54,33 @@ const FormularioRestaurante = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", flexGrow: 1 }}>
-      <Typography component="h1" variant="h6">
-        Formulario de Restaurante
-      </Typography>
-      <Box component="form" onSubmit={aoSubmeterForm}>
-        <TextField
-          value={nomeRestaurante}
-          onChange={evento => setNomeRestaurante(evento.target.value)}
-          id="standard-basic"
-          label="Nome do Restaurante"
-          variant="standard"
-          required
-          fullWidth
-        />
-        <Button sx={{ marginTop: 1 }} type="submit" variant="outlined" fullWidth>
-          Salvar
-        </Button>
-        <Button sx={{ marginTop: 1 }} onClick={voltar} variant="outlined" color="error" fullWidth>
-          Cancelar
-        </Button>
+    <>
+
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", flexGrow: 1 }}>
+        <Typography component="h1" variant="h6">
+          Formulario de Restaurante
+        </Typography>
+        <Box component="form" sx={{ width: "80%", flexGrow: 1 }} onSubmit={aoSubmeterForm}>
+          <TextField
+            value={nomeRestaurante}
+            onChange={evento => setNomeRestaurante(evento.target.value)}
+            id="standard-basic"
+            label="Nome do Restaurante"
+            variant="standard"
+            required
+            fullWidth
+          />
+          <Button sx={{ marginTop: 1 }} type="submit" variant="outlined" fullWidth>
+            Salvar
+          </Button>
+          <Button sx={{ marginTop: 1 }} onClick={voltar} variant="outlined" color="error" fullWidth>
+            Cancelar
+          </Button>
+        </Box>
       </Box>
-    </Box>
+
+
+    </>
   );
 };
 
